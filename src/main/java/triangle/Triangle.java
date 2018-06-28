@@ -1,8 +1,10 @@
 package triangle;
 
+import java.util.List;
+
 public class Triangle {
 
-	public Triangle(int[][] triangle) {
+	public Triangle(List<int[]> triangle) {
 		// TODO Auto-generated constructor stub
 	}
 
