@@ -24,10 +24,13 @@ public class TriangleTest {
 
 	@Test
 	public void tryTofindTheBestPath() {
-		Triangle triangle = new Triangle(data.toArray(new int[data.size()][]));
-		TriangleResult result = triangle.findBestPath();
-		assertEquals(18, result.getSum());
-		assertArrayEquals(new int[] { 9, 2, 2, 4, 1 }, result.getPathValues());
+		int[][] matrix = data.toArray(new int[data.size()][]);
+		int[] path = Triangle.calculateBestPath(matrix);
+		int sum = Triangle.getSum(path, matrix);
+		int[] simplePath = Triangle.getPathValues(path, matrix);
+
+		assertEquals(18, sum);
+		assertArrayEquals(new int[] { 9, 2, 2, 4, 1 }, simplePath);
 	}
 
 }

@@ -12,14 +12,15 @@ import java.util.stream.Collectors;
 public class Calculate {
 
 	public static void main(String[] args) throws IOException {
-		int[][] triangleMatrix = retriveTriangleMatrixBasedOnFile();
-		Triangle triangle = new Triangle(triangleMatrix);
-		TriangleResult result = triangle.findBestPath();
+		int[][] matrix = retriveTriangleMatrixBasedOnFile();
+		int[] path = Triangle.calculateBestPath(matrix);
+		int sum = Triangle.getSum(path, matrix);
+		int[] simplePath = Triangle.getPathValues(path, matrix);
 
-		List<String> pathValues = Arrays.stream(result.getPathValues()).boxed().collect(Collectors.toList()).stream()
+		List<String> pathValues = Arrays.stream(simplePath).boxed().collect(Collectors.toList()).stream()
 				.map(Object::toString).collect(Collectors.toList());
 
-		System.out.println("Minimal path is: " + String.join(" + ", pathValues) + " = " + result.getSum());
+		System.out.println("Minimal path is: " + String.join(" + ", pathValues) + " = " + sum);
 	}
 
 	private static int[][] retriveTriangleMatrixBasedOnFile() throws FileNotFoundException {
